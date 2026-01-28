@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+
+
+<script type="text/javascript">
+    const app = document.getElementById("app");
+    const header = document.createElement("h1");
+    const link = document.createElement("a");
+    const headerContent = document.createTextNode("Hello World🚀");
+    const linkContent = document.createTextNode("Google");
+
+    link.href = "https://www.google.com/";
+
+    header.appendChild(headerContent);
+    link.appendChild(linkContent);
+    app.appendChild(header);
+    app.appendChild(link);
+
+</script>
+</body>
+</html>

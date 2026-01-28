@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+
+    <div id="root"></div>
+
+<script type="text/babel">
+    const container = document.getElementById("root");
+    const root = ReactDOM.createRoot(container);
+    
+    // ini fungsi/function
+
+        const KalkulatorPersegi = () => {
+            const [sisi, setSisi] = React.useState(0);
+
+            const hitungLuas = () => sisi * sisi;
+            const hitungKeliling = () => 4 * sisi;
+
+            return (
+                <div>
+                    <h2>Kalkulator Persegi</h2>
+                    
+                    <label>Masukkan Panjang Sisi:</label>
+                    <input 
+                        type="number" 
+                        onChange={(e) => setSisi(Number(e.target.value))}
+                    />
+
+                    <div>
+                        <p>Hasil:</p>
+                        <p>Luas: {hitungLuas()}</p>
+                        <p>Keliling: {hitungKeliling()}</p>
+                    </div>
+                </div>
+            );
+        }
+
+        const KalkulatorPersegiPanjang = () => {
+            const [panjang, setPanjang] = React.useState(0);
+            const [lebar, setLebar] = React.useState(0);
+
+            const hitungLuas = () => panjang * lebar;
+            const hitungKeliling = () => 2 * (panjang + lebar);
+
+            return (
+                <div>
+                    <h2>Kalkulator Persegi Panjang</h2>
+                    
+                    <label>Masukkan Panjang:</label>
+                    <input 
+                        type="number" 
+                        onChange={(e) => setPanjang(Number(e.target.value))}
+                    />
+                    <br />
+                    <label>Masukkan Lebar:</label>
+                    <input 
+                        type="number" 
+                        onChange={(e) => setLebar(Number(e.target.value))}
+                    />
+                    <br />
+                    <label>Masukkan Panjang Sisi:</label>
+                    <input 
+                        type="number" 
+                        onChange={(e) => setSisi(Number(e.target.value))}
+                    />
+
+                    <div>
+                        <p>Hasil:</p>
+                        <p>Luas: {hitungLuas()}</p>
+                        <p>Keliling: {hitungKeliling()}</p>
+                    </div>
+                </div>
+            );
+        }
+
+        const KalkulatorSegitiga = () => {
+            const [alas, setAlas] = React.useState(0);
+            const [tinggi, setTinggi] = React.useState(0);
+
+            const [sisiB, setSisiB] = React.useState(0);
+            const [sisiC, setSisiC] = React.useState(0);
+
+            const hitungLuas = () => 1/2 * alas * tinggi;
+            const hitungKeliling = () => alas + sisiB + sisiC;
+
+            return (
+                <div>
+                    <h2>Kalkulator Segitiga</h2>
+                    
+                    <label>Masukkan Sisi A:</label>
+                    <input 
+                        type="number" 
+                        onChange={(e) => setAlas(Number(e.target.value))}
+                    />
+                    <br />
+                    <label>Masukkan Sisi B:</label>
+                    <input 
+                        type="number" 
+                        onChange={(e) => setSisiB(Number(e.target.value))}
+                    />
+                    <br />
+                    <label>Masukkan Panjang Sisi C:</label>
+                    <input 
+                        type="number" 
+                        onChange={(e) => setSisiC(Number(e.target.value))}
+                    />
+                    <br />
+                    <label>Masukkan Tinggi:</label>
+                    <input 
+                        type="number" 
+                        onChange={(e) => setTinggi(Number(e.target.value))}
+                    />
+
+                    <div>
+                        <p>Hasil:</p>
+                        <p>Luas: {hitungLuas()}</p>
+                        <p>Keliling: {hitungKeliling()}</p>
+                    </div>
+                </div>
+            );
+        }
+
+        const KalkulatorLingkaran = () => {
+            const PHI = 3.14
+            const [r, setR] = React.useState(0);
+
+            const hitungLuas = () => PHI * r**2;
+            const hitungKeliling = () => 2 * PHI * r;
+
+            return (
+                <div>
+                    <h2>Kalkulator Lingkaran</h2>
+                    
+                    <label>Masukkan Jari-jari:</label>
+                    <input 
+                        type="number" 
+                        onChange={(e) => setR(Number(e.target.value))}
+                    />
+                    <br />
+
+                    <div>
+                        <p>Hasil:</p>
+                        <p>Luas: {hitungLuas()}</p>
+                        <p>Keliling: {hitungKeliling()}</p>
+                    </div>
+                </div>
+            );
+        }
+
+        const ShowKalkulator = () => {
+            const [handleShow, setHandleShow] = React.useState(null);
+
+            const renderKalkulator = () => {
+                if (handleShow === 1) {
+                    return <KalkulatorPersegi />;
+                } else if (handleShow === 2) {
+                    return <KalkulatorPersegiPanjang />;
+                } else if (handleShow === 3) {
+                    return <KalkulatorSegitiga />;
+                } else if (handleShow === 4) {
+                    return <KalkulatorLingkaran />;
+                }
+                return null;
+            };
+
+            const setHandleShow1 = () => setHandleShow(1);
+            const setHandleShow2 = () => setHandleShow(2);
+            const setHandleShow3 = () => setHandleShow(3);
+            const setHandleShow4 = () => setHandleShow(4);
+
+            return (
+                <div>
+                    <h1>Menu Geometri</h1>
+                    <button onClick={setHandleShow1}>Persegi</button>
+                    <button onClick={setHandleShow2}>Persegi Panjang</button>
+                    <button onClick={setHandleShow3}>Segitiga</button>
+                    <button onClick={setHandleShow4}>Lingkaran</button>
+                    <div>
+                        {renderKalkulator()}
+                    </div>
+                </div>
+                
+            );
+        }
+    // ini komponen
+    function HomePage() {
+        
+        return (
+            <>  
+                <ShowKalkulator />
+
+            </>
+        );
+    }
+    root.render(
+    <>
+        <HomePage />
+    </>
+    );
+</script>
+</body>
+</html>

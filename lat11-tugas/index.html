@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        span { 
+            padding: 10px;
+        };
+        .test {
+            align-self: flex-end;
+        }
+        #but{
+            margin: 10px;
+            margin-left: 30px;
+        }
+        button {
+            margin: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="root"></div>
+
+<script type="text/babel">
+    const container = document.getElementById("root");
+    const root = ReactDOM.createRoot(container);
+    
+    // Ini fungsi/function
+
+    const Button = ({ onClick }) => {
+        const [counter, setCounter] = React.useState(0);
+        const handleCounterTambah = () => {
+            setCounter(counter + 1);
+        }
+        const handleCounterKurang = () => {
+            setCounter(counter - 1);
+        }
+        const handleCounterReset = () => {
+            setCounter(0);
+        }
+
+        return (
+            <>
+                <div class="test">
+                    <button onClick={handleCounterKurang}>-</button>
+                    <span>{counter}</span>
+                    <button onClick={handleCounterTambah}>+</button>
+                    <br />
+                    <button id="but" onClick={handleCounterReset}>Reset</button>
+                </div>
+            </>
+        )
+    }
+
+
+    // Ini Komponen
+    function HomePage() {
+        return (
+            <>
+                <div>
+                    <Button />
+                </div>
+            </>
+        );
+    }
+    root.render(
+    <>
+        <HomePage />
+    </>
+    );
+</script>
+</body>
+</html>

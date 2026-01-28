@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+
+    <div id="root"></div>
+
+<script type="text/babel">
+    const container = document.getElementById("root");
+    const root = ReactDOM.createRoot(container);
+    
+    // ini fungsi/function
+
+        const KalkulatorPersegi = () => {
+            const [sisi, setSisi] = React.useState(0);
+
+            const hitungLuas = () => sisi * sisi;
+            const hitungKeliling = () => 4 * sisi;
+
+            return (
+                <div>
+                    <h2>Kalkulator Persegi</h2>
+                    
+                    <label>Masukkan Panjang Sisi:</label>
+                    <input 
+                        type="number" 
+                        onChange={(e) => setSisi(Number(e.target.value))}
+                    />
+
+                    <div>
+                        <p>Hasil:</p>
+                        <p>Luas: {hitungLuas()}</p>
+                        <p>Keliling: {hitungKeliling()}</p>
+                    </div>
+                </div>
+            );
+        }
+
+    // ini komponen
+    function HomePage() {
+        return (
+            <>
+                <div>
+                    <KalkulatorPersegi />
+                </div>
+            </>
+        );
+    }
+    root.render(
+    <>
+        <HomePage />
+    </>
+    );
+</script>
+</body>
+</html>
